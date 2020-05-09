@@ -11,9 +11,21 @@ let reservation = [];
 let waitlist = [];
 
 app.get("/", function(req, res) {
-    
-})
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+app.get("/make", function(req, res) {
+    res.sendFile(path.join(__dirname, "make.html"));
+});
+app.get("/view", function(req, res) {
+    res.sendFile(path.join(__dirname, "view.html"));
+});
 
+app.get("/api/reservation", function(req, res) {
+    return res.json(reservation);
+});
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist);
+});
 
 
 
