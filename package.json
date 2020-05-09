@@ -1,0 +1,26 @@
+{
+  "name": "hotrestaurant",
+  "version": "1.0.0",
+  "description": "Application for taking reservations.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ECOtterstrom/hotrestaurant.git"
+  },
+  "keywords": [
+    "reservation"
+  ],
+  "author": "Otterstrom, Joko, Loosle, McGrew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ECOtterstrom/hotrestaurant/issues"
+  },
+  "homepage": "https://github.com/ECOtterstrom/hotrestaurant#readme"
+}
