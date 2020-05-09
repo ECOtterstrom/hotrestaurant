@@ -13,9 +13,85 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8a7e0c6166.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Tables | Hot Restaurant</title>
 </head>
 <body>
+
+
+<script>
+  function runTableQuery() {
+    $.ajax({ url: "/api/tables", method: "GET" })
+      .then(function(tableData) {
+        console.log(tableData);
+        console.log("------------------------------------");
+
+        for (let i = 0; i < tableData.length; i++) {
+
+          let tableList = $("#tableList");
+
+          let listItem = $("<li class='list-group>");
+
+          listItem.append(
+            $("<h2>").text("Table #" + (i + 1)),
+            $("<hr>"),
+            $("<h2>").text("ID: " + tableData[i].customerID),
+            $("<h2>").text("Name: " + tableData[i].customerName),
+            $("<h2>").text("Email: " + tableData[i].customerEmail),
+            $("<h2>").text("Phone: " + tableData[i].phoneNumber)
+          );
+
+          tableList.append(listItem);
+        }
+      });
+  }
+
+  function runWaitListQuery() {
+
+    $.ajax({ url: "/api/waitlist", method: "GET" })
+      .then(function(waitData) {
+
+        console.log(waitData);
+        console.log("------------------------------------");
+
+        for (let i = 0; i < waitData.length; i++) {
+
+          let waitList = $("#waitList");
+
+          let listItem = $("<li class='list-group>");
+
+          listItem.append(
+            $("<h2>").text("Table #" + (i + 1)),
+            $("<hr>"),
+            $("<h2>").text("ID: " + waitData[i].customerID),
+            $("<h2>").text("Name: " + waitData[i].customerName),
+            $("<h2>").text("Email: " + waitData[i].customerEmail),
+            $("<h2>").text("Phone: " + waitData[i].phoneNumber)
+          );
+
+          waitList.append(listItem);
+        }
+      });
+  }
+
+  function clearTable() {
+    alert("Clearing...");
+
+    $.ajax({ url: "/api/clear", method: "POST" }).then(function() {
+      $("#waitList").empty();
+      $("#tableList").empty();
+    });
+  }
+
+  $("#clear").on("click", clearTable);
+
+  runTableQuery();
+  runWaitListQuery();
+
+</script>
+
+
+
     
 </body>
 </html>
