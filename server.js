@@ -21,11 +21,33 @@ app.get("/view", function(req, res) {
     res.sendFile(path.join(__dirname, "view.html"));
 });
 
-app.get("/api/reservation", function(req, res) {
+app.get("/api/tables", function(req, res) {
     return res.json(reservation);
 });
+
 app.get("/api/waitlist", function(req, res) {
     return res.json(waitlist);
+});
+
+// post
+app.post("/api/tables", function(req, res) {
+
+    var newReservation = req.body;
+
+    
+     
+        
+        if (reservation.length < 5){
+            reservation.push(newReservation)
+            return res.json(reservation);
+        } else {
+            waitlist.push(newReservation)
+            return res.json(true);
+        }
+    
+    console.log(reservation);
+
+    res.json(newReservation);
 });
 
 
